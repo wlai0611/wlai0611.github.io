@@ -6,3 +6,5 @@ navbar:
       href: index.html
     - text: "CLT"
       href: CLT_2.html
+    - text: "Case Study 1"
+      href: caseStudy1Missing.pdf
