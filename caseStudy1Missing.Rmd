@@ -5,6 +5,7 @@ date: "January 11, 2020"
 output:
   html_document: default
   pdf_document: default
+  always_allow_html: yes
 ---
 
 Load Data and Libraries
