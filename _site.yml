@@ -5,5 +5,7 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "CLT"
+      href: CLT_2.html
+    - text: "CaseStudy1"
       href: caseStudy1Missing.html
 
