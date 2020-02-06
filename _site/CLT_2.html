@@ -10,10 +10,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Walter" />
+<meta name="author" content="Bivin" />
 
 
-<title>Simple Website</title>
+<title>Live Session 2 CLT</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +24,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -268,7 +270,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Website</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -277,6 +279,9 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="CLT_2.html">CLT</a>
+</li>
+<li>
+  <a href="caseStudy1Missing.html">CaseStudy1</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -290,14 +295,66 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Simple Website</h1>
-<h4 class="author">Walter</h4>
-<h4 class="date">February 5, 2020</h4>
+<h1 class="title toc-ignore">Live Session 2 CLT</h1>
+<h4 class="author">Bivin</h4>
+<h4 class="date">9/6/2018</h4>
 
 </div>
 
 
-
+<div id="simulator-to-demonstrate-clt" class="section level1">
+<h1>Simulator to Demonstrate CLT</h1>
+<div id="control-parameters" class="section level2">
+<h2>Control Parameters</h2>
+<pre class="r"><code>df = read.table(file.choose(),stringsAsFactors = FALSE,header = FALSE,sep = &quot;;&quot;)
+n1 = 10 # sample size per sample for 1st distribution
+n2 = 100 # sample size per sample for 2nd distribution (we will compare these distribuions) 
+simulations = 1000 #number of samples and thus number of xbars we will generate.  
+mu = 0; # mean parameter for use with normal distribuions
+sigma = 1; # standard deviation parameter for use with normal distribuions</code></pre>
+</div>
+<div id="data-holder" class="section level2">
+<h2>Data Holder</h2>
+<pre class="r"><code>xbar_holder1 = numeric(simulations) # This will hold all the sample means for the first distribution.
+xbar_holder2 = numeric(simulations) # This will hold all the sample means for the second distribution.</code></pre>
+</div>
+<div id="simulate-and-store" class="section level2">
+<h2>Simulate and Store</h2>
+<p>Generate 1000 samples each of size 10 and find the mean of each sample. Then store each mean in the xbar_holder vector.</p>
+<pre class="r"><code>for (i in 1:simulations)
+{ 
+  sample1 = rnorm(n1,mean = mu, sd = sigma)
+  sample2 = rnorm(n2,mean = mu, sd = sigma)
+  xbar1 = mean(sample1)
+  xbar2 = mean(sample2)
+  xbar_holder1[i] = xbar1
+  xbar_holder2[i] = xbar2
+}</code></pre>
+</div>
+<div id="display-the-distribution-of-sample-means" class="section level2">
+<h2>Display the Distribution of Sample Means</h2>
+<div id="plot-a-histogram-of-the-sample-means" class="section level4">
+<h4>(plot a histogram of the sample means)</h4>
+<pre class="r"><code>par(mfrow = c(2,1))
+hist(xbar_holder1, col = &quot;blue&quot;, main = paste(&quot;Distribution of the sample mean: n = &quot;, n1), xlab = &quot;Dist 1 Sample Means&quot;, xlim = c(-4,4))
+hist(xbar_holder2, col = &quot;red&quot;, main = paste(&quot;Distribution of the sample mean: n = &quot;, n2), xlab = &quot;Dist 2 Sample Means&quot;, xlim = c(-4,4))</code></pre>
+<p><img src="CLT_2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+<div id="summary-statistics" class="section level2">
+<h2>Summary Statistics</h2>
+<pre class="r"><code>summary(xbar_holder1) #5 number summary and the mean</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -0.990669 -0.207588 -0.009115 -0.002580  0.216113  1.101185</code></pre>
+<pre class="r"><code>summary(xbar_holder2) #5 number summary and the mean</code></pre>
+<pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -0.2826742 -0.0655022 -0.0028403 -0.0007963  0.0631436  0.3114663</code></pre>
+<pre class="r"><code>sd(xbar_holder1) # standard deviation of dstribuion 1</code></pre>
+<pre><code>## [1] 0.3267721</code></pre>
+<pre class="r"><code>sd(xbar_holder2) #standard deviation of distribuion 2</code></pre>
+<pre><code>## [1] 0.1011325</code></pre>
+</div>
+</div>
 
 
 
