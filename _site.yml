@@ -1,4 +1,5 @@
 name: "my-website"
+output_dir: "."
 navbar:
   title: "Website"
   left:
@@ -7,4 +8,4 @@ navbar:
     - text: "CLT"
       href: CLT_2.html
     - text: "Case Study"
-      href: CLT_2.html
+      href: caseStudy1Missing.html
