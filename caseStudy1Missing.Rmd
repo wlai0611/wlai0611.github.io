@@ -5,7 +5,6 @@ date: "January 11, 2020"
 output:
   html_document: default
   pdf_document: default
-  always_allow_html: yes
 ---
 
 Load Data and Libraries
@@ -441,8 +440,7 @@ ggplot(filterCity,aes(x=StyleCat)) + geom_point(aes(y=stylePct,col=City),size=3,
 ```
 
 
-```{r}
+
 library(plotly)
 brewhist= ggplot(targetCities,aes(log(brewPcap),text=City)) + geom_histogram(bins=60)
 ggplotly(brewhist)
-```
