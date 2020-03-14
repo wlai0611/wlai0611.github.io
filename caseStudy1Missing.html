@@ -276,13 +276,6 @@ $(document).ready(function () {
         <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="CLT_2.html">CLT</a>
-</li>
-<li>
-  <a href="caseStudy1Missing.html">CaseStudy</a>
-</li>
-<li class="dropdown-header">CaseStudy2</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -306,47 +299,18 @@ $(document).ready(function () {
 <pre class="r"><code>beer=read.csv(file.choose())
 breweries=read.csv(file.choose())
 cities=read.csv(file.choose())
-library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(grid)
+library(dplyr)
+library(grid)
 library(ggplot2)
 library(tidyr)
 library(maps)
 library(usmap)
 library(stringr)
 library(class)
-library(caret)</code></pre>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre class="r"><code>library(Hmisc)</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<pre><code>## 
-## Attaching package: &#39;survival&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:caret&#39;:
-## 
-##     cluster</code></pre>
-<pre><code>## Loading required package: Formula</code></pre>
-<pre><code>## 
-## Attaching package: &#39;Hmisc&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     src, summarize</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     format.pval, units</code></pre>
-<pre class="r"><code>library(gridExtra)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;gridExtra&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     combine</code></pre>
-<pre class="r"><code>library(naniar)</code></pre>
+library(caret)
+library(Hmisc)
+library(gridExtra)
+library(naniar)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Merge Beer Data with Brewery Data</li>
 </ol>
