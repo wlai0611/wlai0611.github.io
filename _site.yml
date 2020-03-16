@@ -5,6 +5,7 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-
+    - text: "Decision Tree Predicts Attrition"
+      href: employeesRF.html
     
     
