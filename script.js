@@ -6,6 +6,7 @@ function solver(){
 	console.log(indepVarData);
 	let dependentVarData = getDependentVarData();
 	console.log(dependentVarData);
+	A = getIndepVarData();
 	
 	
 }
@@ -47,6 +48,52 @@ function addRow(){
 	addDependentVariableCell(newRow);
 	removePlusSignFromLastColumn();
 }
+
+function subtractRowFromOtherRows(matrix, rowNum, colNum){
+	for (let i = 0; (i < matrix.length) & (i != rowNum); i++){
+		leadingNum = matrix[i][colNum]
+	    matrix[i]=vectorAddition(matrix[i],scalarMultiplication(-1*leadingNum,matrix[rowNum]))
+	}	
+}
+
+function get1stRowWithNonZeroPivotBelowOrAtCurrentPosition(matrix, rowNum, colNum){
+	
+	
+	for ( let i = rowNum; i < matrix.length;i++){
+		if (matrix[i][colNum] != 0){
+			return i
+		}
+	}	
+	return -1
+	
+}
+
+function rowExchange(matrix,row1index,row2index){
+	if (row1index == row2index){return}
+	temp = []
+	for( let i = 0 ; i<numberOfColumns;i++){
+		temp[i]              = matrix[row1index][i]
+		matrix[row1index][i] = matrix[row2index][i]
+	}
+	matrix[row2index] = temp
+}
+function vectorAddition(vector1,vector2){
+    vectorSum = []
+    vectorDimension = vector1.length
+    for( let i=0;i<vectorDimension;i++){
+        vectorSum.push(vector1[i]+vector2[i])
+    }
+    return vectorSum
+}
+
+function scalarMultiplication(scalar,vector){
+    scaledVector = []
+    for (num of vector){
+        scaledVector.push(scalar*num)
+    }
+    return scaledVector
+}
+
 function addColumn(){
 	let rows   	= container.getElementsByClassName("row");
 	for (row of rows){
@@ -107,7 +154,8 @@ function getDependentVarData(){
 function removePlusSignFromLastColumn(){
 	let lastCol = document.getElementsByClassName("col"+(numberOfColumns-1))
 	for (element of lastCol){
-		element.innerHTML = element.innerHTML.replace(" + ","");
+		spanText = element.getElementsByTagName("span")[0].innerHTML;
+		element.getElementsByTagName("span")[0].innerHTML = spanText.replace(" + ","");
 	}
 }
 function addPlusSign2ndToLastColumn(){

@@ -1,0 +1,32 @@
+for (let i = 0; i<numberOfRows; i++){
+    if (i < numberOfColumns){
+      currentRow = matrix[i]   
+      pivot = currentRow[i]
+      if pivot == 0:
+          find nonzeropivot below
+          if anynon0pivotbelow:
+              rowExchange(matrix,i,non0pivotbelow[0])
+              currentRow = matrix[i]
+              pivot = currentRow[i]
+          else:
+              if numberOfColumns>i+1:
+                currentRow 
+
+
+
+000             
+001
+
+if numRows<numCols:
+  numPivots = numRows
+else
+  numPivots = numCols
+
+for row:
+  for col >=row:
+    get rows with nonzero pivot
+    if rows with non zero pivot:
+       rowexchange with top most row with non zero pivot
+  subtract from every other row
+  
+
