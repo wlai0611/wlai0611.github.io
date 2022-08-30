@@ -1,13 +1,9 @@
 let numberOfColumns = 2;
 let numberOfRows    = 2;
 function solver(){
-	let indepVarData = getIndepVarData();
-	console.log("test");
-	console.log(indepVarData);
-	let dependentVarData = getDependentVarData();
-	console.log(dependentVarData);
-	A = getIndepVarData();
 	
+	A = getIndepVarData();
+	rref(A);
 	
 }
 function addInputCell(rowElement, columnNumber){
@@ -49,10 +45,35 @@ function addRow(){
 	removePlusSignFromLastColumn();
 }
 
+function rref(matrix){
+	
+	let i = 0
+	let j = 0
+	while ((i<numberOfRows)&(j<numberOfColumns)){
+		for (;j<numberOfColumns;j++){
+			rowOfNextPivot = get1stRowWithNonZeroPivotBelowOrAtCurrentPosition(matrix, i, j)
+			if (rowOfNextPivot != -1){
+				rowExchange(matrix,i,rowOfNextPivot)
+				break
+			}
+		}
+		pivot = matrix[i][j]
+		matrix[i] = scalarMultiplication(1/pivot,matrix[i])
+		subtractRowFromOtherRows(matrix,i,j)
+		console.log(matrix);
+		i += 1
+		j += 1
+	}
+	
+	
+}
+
 function subtractRowFromOtherRows(matrix, rowNum, colNum){
-	for (let i = 0; (i < matrix.length) & (i != rowNum); i++){
-		leadingNum = matrix[i][colNum]
-	    matrix[i]=vectorAddition(matrix[i],scalarMultiplication(-1*leadingNum,matrix[rowNum]))
+	for (let i = 0; i < matrix.length; i++){
+		if(i != rowNum){
+			leadingNum = matrix[i][colNum]
+			matrix[i]=vectorAddition(matrix[i],scalarMultiplication(-1*leadingNum,matrix[rowNum]))	
+		}
 	}	
 }
 
