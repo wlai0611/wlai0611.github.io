@@ -57,6 +57,9 @@ function rref(matrix){
 				break
 			}
 		}
+		if (j==numberOfColumns){
+			j = numberOfColumns-1
+		}
 		pivot = matrix[i][j]
 		matrix[i] = scalarMultiplication(1/pivot,matrix[i])
 		subtractRowFromOtherRows(matrix,i,j)
