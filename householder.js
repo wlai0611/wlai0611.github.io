@@ -17,7 +17,7 @@ function getHouseholder(){
 		
 		a = a.map(function (x){return parseFloat(x)})
 		r = r.map(function (x){return parseFloat(x)})
-		if (dotProduct(a,a) - dotProduct(r,r) > 0.001){
+		if ( Math.abs(dotProduct(a,a) - dotProduct(r,r)) > 0.00001){
 			throw "starting vector and ending vector must have same norm"
 		}
 		
@@ -104,7 +104,7 @@ function outerProduct(v1,v2){
 }
 
 function roundNumbers(matrix){
-	return matrix.map(function(row){return row.map(function(x){return Math.round(x*100)/100})})
+	return matrix.map(function(row){return row.map(function(x){return Math.round(x*10000)/10000})})
 }
 
 function printMatrix(matrix){
