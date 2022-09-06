@@ -1,8 +1,13 @@
 <html>
 <head></head>
 <body>
-Starting Vector:<input id="startvec" type='text' size=50><br>
-Ending Vector<span> </span>:<input id="endvec" type='text' size=50>
+Type in a starting vector and ending vector space separated like: 1 2 3 4
+and click "Get Householder Reflector" to get the matrix that will reflect the starting vector
+to the ending vector
+<br>
+<br>
+Starting Vector:<input id="startvec" type='text' size=50 value="1 2 3"><br>
+Ending Vector<span> </span>:<input id="endvec" type='text' size=50 value ="1 1 1"><br>
 <button onclick="getHouseholder()">Get Householder Reflector</button><br>
 <textarea id='householder_output' rows=10 cols=30>
 

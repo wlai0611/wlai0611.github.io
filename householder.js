@@ -1,32 +1,58 @@
 
 function getHouseholder(){
 	try{
-		let aInput = document.getElementById("startvec").value;
-		let rInput = document.getElementById("endvec").value;
+		let aInput = document.getElementById("startvec").value.trimLeft().trimRight();
+		let rInput = document.getElementById("endvec").value.trimLeft().trimRight();
 		let a = aInput.split(" ");
 		let r = rInput.split(" ");
 		if (a.length != r.length){
 			throw "THe starting and ending vectors are of different dimensions"
 		}
-		else{
-			a = a.map(function (x){return parseFloat(x)})
-			r = r.map(function (x){return parseFloat(x)})
-			let negativeR = scalarMultiplication(-1,r)
-			let v         = vectorAddition(a,negativeR)
-			let vnorm     = dotProduct(v,v);
-			let u         = scalarMultiplication(1/(vnorm**0.5),v);
-			let projector = outerProduct(u,u)
-			console.log(projector)
-			let i_minus_p = matrixAddition(identity(a.length),projector,subtract=true)
-			let reflector = matrixAddition(i_minus_p,projector,subtract=true)
-			let output    = document.getElementById("householder_output");
-			output.value  = printMatrix(reflector);
-			console.log('test');
+		if (containsNonNumber(a)){
+			throw "Starting vector is not in proper format.  Type your vector like this: 1 2 3 4"
 		}
+		if (containsNonNumber(r)){
+			throw "Ending vector is not in proper format.  Type your vector like this: 1 2 3 4"
+		}
+		
+		a = a.map(function (x){return parseFloat(x)})
+		r = r.map(function (x){return parseFloat(x)})
+		if (dotProduct(a,a) - dotProduct(r,r) > 0.001){
+			throw "starting vector and ending vector must have same norm"
+		}
+		
+		let negativeR = scalarMultiplication(-1,r)
+		let v         = vectorAddition(a,negativeR)
+		let vnorm     = dotProduct(v,v)**0.5;
+		if (vnorm != 0){
+			vnorm = 1/vnorm;
+		}
+		let u         = scalarMultiplication(vnorm,v);
+		let projector = outerProduct(u,u)
+		console.log(projector)
+		let i_minus_p = matrixAddition(identity(a.length),projector,subtract=true)
+		let reflector = matrixAddition(i_minus_p,projector,subtract=true)
+		reflector = roundNumbers(reflector);
+		let output    = document.getElementById("householder_output");
+		output.value  = printMatrix(reflector);
+		console.log('test');
+		
 	}
 	catch(e){
 			alert(e)
 	}
+}
+
+function containsNonNumber(strArray){
+	return strArray.map(function (x){return x.match(/\d+/)==null}).reduce(function(x1,x2){return x1+x2}) > 0
+}
+
+function Ax(A,x){
+  result = []
+  for(let i=0;i<A.length;i++){
+	  result.push(dotProduct(A[i],x))
+  }
+  return result
 }
 
 function identity(n){
@@ -77,8 +103,12 @@ function outerProduct(v1,v2){
 	return result
 }
 
+function roundNumbers(matrix){
+	return matrix.map(function(row){return row.map(function(x){return Math.round(x*100)/100})})
+}
+
 function printMatrix(matrix){
-	return matrix.map(function(row) {return ('['+row.toString()+']\n')}).toString()
+	return "[" + matrix.map(function(row) {return ('['+row.toString()+']\n')}).toString() +"]"
 }
 
 function parseInputs(){
