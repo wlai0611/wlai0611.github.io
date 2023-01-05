@@ -275,16 +275,11 @@ $(document).ready(function () {
         <li>
           <a href="index.html">Home</a>
         </li>
-		
         <li>
-          <a href="equationSolverRedirect.html">(Python Numpy) Reduced Row Echelon Solver</a>
+          <a href="householderReflector.html">(JavaScript & Python Numpy) Householder Reflections</a>
         </li>
 		
-		<li>
-		  <a href="householderReflector.html">(JavaScript & Python Numpy) Householder Reflections</a>
-		</li>
-		
-		<li>
+		    <li>
           <a href="caseStudy1Missing.html">(R) Beer Case Study</a>
         </li>
 		
@@ -306,13 +301,36 @@ $(document).ready(function () {
 
 </div>
 
-<p> Hi, my name is Walter Bong Lai.  This is a webpage where I show off my skills. Click on the above tabs to see an example of each skill.</p>
-<p>My interests are: </p>
-<ul>
-<li>Cats</li>
-<li>Linear Algebra</li>
-<li>Statistics</li>
-</ul>
+<p> Hi, my name is Walter Bong Lai.</p>
+<p>Look at the pictures of my previous projects below.</p>
+<figure>
+  <figcaption>Below, I animated the orthogonal iteration algorithm which finds eigenvectors of symmetric matrices.<br>
+    Background: The eigenvectors of a symmetric matrix can be found by continuously
+    multiplying a set of random vectors by that symmetric matrix and orthogonalizing
+    the vectors after every multiplication. <br>  Notice how the animations alternate
+    between bringing the vectors closer (matrix multiplication) and then 
+    pushing them away from each other until they are 90 degrees from another (orthogonalization).<br>
+  <br>
+  The source code for this animation found here: <a href="singular_value_decomposition.html#orthogonal_iteration">Jupyter Notebook</a>
+  </figcaption>
+  <img src="orthogonal_iteration.gif"/>
+  
+</figure>
+
+<figure>
+  <figcaption>The cat below is really cute and this is <a href="https://www.youtube.com/@Hosico_cat">his YouTube channel</a>
+  <br>
+  The pictures on the left are original pictures of the cat.  The pictures on the right are compressed pictures of the cat.
+  <br>
+  <b>Notice how the compressed images still show his big beautiful eyes!</b>
+  <br>
+  I compressed these images by implementing singular value decomposition from scratch <br>
+  using the orthogonal iteration algorithm from the first animation.
+  <a href="singular_value_decomposition.html#singular_value_decomposition">Source Code Here</a>
+  </figcaption>
+  <img src="hosico_svd.PNG"/>
+</figure>
+
 <!--
 <p>
   Please check out my RShiny app that helps variable selection with Naive Bayes Classifiers to
